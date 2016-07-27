@@ -53,8 +53,11 @@ var lsrequire = (function(){
             });
             url = url.replace(/\,$/,'');
             //下载脚本
-            if(url != baseUrl + '/??')
-                document.write('<script src="'+url+'"></script>');
+            if(url != baseUrl + '/??'){
+                var script = document.createElement('script');
+                script.src = url;
+                document.body.appendChild(script);
+            }
         }
         var injectForOnlyDownload = function(file){
             if(file.type == 'css'){
